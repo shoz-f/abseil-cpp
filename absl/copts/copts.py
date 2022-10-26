@@ -151,7 +151,7 @@ COPT_VARS = {
     ],
     "ABSL_MSVC_LINKOPTS": [
         # Object file doesn't export any previously undefined symbols
-        "-ignore:4221",
+        "/ignore:4221",
     ],
     # "HWAES" is an abbreviation for "hardware AES" (AES - Advanced Encryption
     # Standard). These flags are used for detecting whether or not the target
