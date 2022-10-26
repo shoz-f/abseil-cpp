@@ -526,7 +526,7 @@ function(absl_make_dll)
     SHARED
       "${ABSL_INTERNAL_DLL_FILES}"
   )
-  target_link_libraries(
+  target_link_options(
     abseil_dll
     PRIVATE
       ${ABSL_DEFAULT_LINKOPTS}

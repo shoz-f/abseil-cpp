@@ -241,6 +241,8 @@ Cflags: -I\${includedir}${PC_CFLAGS}\n")
       )
       target_link_libraries(${_NAME}
         PUBLIC ${_dll_deps}
+      )
+      target_link_options(${_NAME}
         PRIVATE
           ${ABSL_CC_LIB_LINKOPTS}
           ${ABSL_DEFAULT_LINKOPTS}
@@ -263,6 +265,8 @@ Cflags: -I\${includedir}${PC_CFLAGS}\n")
       target_sources(${_NAME} PRIVATE ${ABSL_CC_LIB_SRCS} ${ABSL_CC_LIB_HDRS})
       target_link_libraries(${_NAME}
       PUBLIC ${ABSL_CC_LIB_DEPS}
+      )
+      target_link_options(${_NAME}
       PRIVATE
         ${ABSL_CC_LIB_LINKOPTS}
         ${ABSL_DEFAULT_LINKOPTS}
@@ -339,6 +343,9 @@ Cflags: -I\${includedir}${PC_CFLAGS}\n")
     target_link_libraries(${_NAME}
       INTERFACE
         ${ABSL_CC_LIB_DEPS}
+    )
+    target_link_options(${_NAME}
+      INTERFACE
         ${ABSL_CC_LIB_LINKOPTS}
         ${ABSL_DEFAULT_LINKOPTS}
     )
@@ -451,7 +458,10 @@ function(absl_cc_test)
 
   target_link_libraries(${_NAME}
     PUBLIC ${ABSL_CC_TEST_DEPS}
-    PRIVATE ${ABSL_CC_TEST_LINKOPTS}
+  )
+  target_link_options(${_NAME}
+    PRIVATE
+      ${ABSL_CC_TEST_LINKOPTS}
   )
   # Add all Abseil targets to a folder in the IDE for organization.
   set_property(TARGET ${_NAME} PROPERTY FOLDER ${ABSL_IDE_FOLDER}/test)
